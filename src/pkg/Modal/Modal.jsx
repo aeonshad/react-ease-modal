@@ -1,3 +1,4 @@
+import React from 'react';
 import { ReactComponent as CloseIcon } from './x.svg';
 
 export const Modal = ({ open, children, className }) => (open ? <div className={className}>{children}</div> : null);
