@@ -5,7 +5,7 @@
 <a href='https://www.npmjs.com/'><img alt="Static Badge" src="https://img.shields.io/badge/version-10.8.2-red?style=flat&logo=NPM&label=NPM"></a>
 <a href='https://github.com/aeonshad/react-ease-modal/blob/main/LICENSE'><img alt="Static Badge" src="https://img.shields.io/badge/version-MIT-%23cfb232?style=flat&logoColor=%23b3bd68&label=License"></a>
 
-Un composant de modale simple, modulaire et personnalisable pour les applications React. Compatible avec Tailwind CSS, il permet une gestion flexible des modales avec diverses options de style.
+Un composant de modale simple, modulaire et personnalisable pour les applications React. Compatible avec Tailwind CSS, il permet une gestion flexible des modales avec diverses options de style et d'accessibilité.
 
 ## Table des matières
 
