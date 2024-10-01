@@ -3,44 +3,63 @@ import { ReactComponent as CloseIcon } from './x.svg';
 export const Modal = ({
   open,
   children,
-  className
+  className,
+  ariaLabelledBy,
+  ariaDescribedBy
 }) => open ? /*#__PURE__*/React.createElement("div", {
-  className: className
+  className: className,
+  role: "dialog",
+  "aria-modal": "true",
+  "aria-labelledby": ariaLabelledBy,
+  "aria-describedby": ariaDescribedBy,
+  tabIndex: "-1"
 }, children) : null;
 export const ModalContent = ({
   children,
-  className
+  className,
+  ariaLabel
 }) => /*#__PURE__*/React.createElement("div", {
-  className: className
+  className: className,
+  "aria-label": ariaLabel
 }, children);
 export const ModalClose = ({
   onClose,
-  className
+  className,
+  ariaLabel
 }) => /*#__PURE__*/React.createElement(CloseIcon, {
   className: className,
+  "aria-label": ariaLabel,
   onClick: onClose
 });
 export const ModalHeader = ({
   children,
-  className
+  className,
+  ariaLabel
 }) => /*#__PURE__*/React.createElement("div", {
-  className: className
+  className: className,
+  "aria-label": ariaLabel
 }, children);
 export const ModalTitle = ({
   children,
-  className
+  className,
+  id
 }) => /*#__PURE__*/React.createElement("h2", {
-  className: className
+  className: className,
+  id: id
 }, children);
 export const ModalDescription = ({
   children,
-  className
+  className,
+  id
 }) => /*#__PURE__*/React.createElement("p", {
-  className: className
+  className: className,
+  id: id
 }, children);
 export const ModalFooter = ({
   children,
-  className
+  className,
+  ariaLabel
 }) => /*#__PURE__*/React.createElement("div", {
-  className: className
+  className: className,
+  "aria-label": ariaLabel
 }, children);
