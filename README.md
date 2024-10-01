@@ -1,70 +1,244 @@
-# Getting Started with Create React App
+# React Ease Modal
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A simple, modular, and customizable modal component for React applications. Compatible with Tailwind CSS, it provides flexible modal management with various styling options.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+-   [Installation](#installation)
+-   [Compatibility and Dependencies](#compatibility-and-dependencies)
+-   [Usage](#usage)
+-   [Properties](#properties)
+-   [Styles](#styles)
+-   [License](#license)
 
-### `npm start`
+## Installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+To install `react-ease-modal` in your React project, run one of the following commands:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```bash
+npm install react-ease-modal
+```
 
-### `npm test`
+or
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+yarn add react-ease-modal
+```
 
-### `npm run build`
+## Compatibility and Dependencies
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Dependencies
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+`react-ease-modal` does not rely on any external libraries to function.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Compatibility
 
-### `npm run eject`
+-   **React**: Compatible with React 17+ and React 18+.
+-   **Tailwind CSS (optional)**: While Tailwind is not required, you can use it to style the modal.
+-   **CSS**: You can use your own CSS classes for additional customization.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Usage
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+To use `react-ease-modal` and its subcomponents, import them into your React file and integrate them into your JSX:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```jsx
+import { useState } from 'react';
+import { Modal, ModalContent, ModalClose, ModalDescription, ModalFooter, ModalHeader, ModalTitle } from 'react-ease-modal';
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+function App() {
+    const [isOpen, setIsOpen] = useState(false);
 
-## Learn More
+    return (
+        <main>
+            <button className="btn btn-primary" onClick={() => setIsOpen(true)}>
+                Open Modal
+            </button>
+            <Modal open={isOpen}>
+                <ModalContent>
+                    <ModalClose onClose={() => setIsOpen(false)} />
+                    <ModalHeader>
+                        <ModalTitle>Modal Title</ModalTitle>
+                        <ModalDescription>This is the modal content.</ModalDescription>
+                    </ModalHeader>
+                    <ModalFooter>
+                        <button className="btn btn-secondary" onClick={() => setIsOpen(false)}>
+                            Close Modal
+                        </button>
+                    </ModalFooter>
+                </ModalContent>
+            </Modal>
+        </main>
+    );
+}
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+export default App;
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Properties
 
-### Code Splitting
+### Modal
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+| Property    | Type        | Required | Description                                 |
+| ----------- | ----------- | -------- | ------------------------------------------- |
+| `className` | `string`    | Optional | Custom CSS class(es) to apply to the modal. |
+| `open`      | `boolean`   | Yes      | Indicates if the modal is open or closed.   |
+| `children`  | `ReactNode` | Yes      | Content to display inside the modal.        |
 
-### Analyzing the Bundle Size
+### ModalContent
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+| Property    | Type        | Required | Description                                         |
+| ----------- | ----------- | -------- | --------------------------------------------------- |
+| `className` | `string`    | Optional | Custom CSS class(es) to apply to the modal content. |
+| `children`  | `ReactNode` | Yes      | Content to display inside the modal.                |
 
-### Making a Progressive Web App
+### ModalClose
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+| Property    | Type       | Required | Description                                            |
+| ----------- | ---------- | -------- | ------------------------------------------------------ |
+| `className` | `string`   | Optional | Custom CSS class(es) to apply to the modal close icon. |
+| `onClose`   | `function` | Yes      | Callback function triggered to close the modal.        |
 
-### Advanced Configuration
+### ModalHeader
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+| Property    | Type        | Required | Description                                        |
+| ----------- | ----------- | -------- | -------------------------------------------------- |
+| `className` | `string`    | Optional | Custom CSS class(es) to apply to the modal header. |
+| `children`  | `ReactNode` | Yes      | Content to display inside the modal header.        |
 
-### Deployment
+### ModalTitle
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+| Property    | Type        | Required | Description                                       |
+| ----------- | ----------- | -------- | ------------------------------------------------- |
+| `className` | `string`    | Optional | Custom CSS class(es) to apply to the modal title. |
+| `children`  | `ReactNode` | Yes      | Title to display inside the modal.                |
 
-### `npm run build` fails to minify
+### ModalDescription
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+| Property    | Type        | Required | Description                                             |
+| ----------- | ----------- | -------- | ------------------------------------------------------- |
+| `className` | `string`    | Optional | Custom CSS class(es) to apply to the modal description. |
+| `children`  | `ReactNode` | Yes      | Description to display inside the modal.                |
+
+### ModalFooter
+
+| Property    | Type        | Required | Description                                        |
+| ----------- | ----------- | -------- | -------------------------------------------------- |
+| `className` | `string`    | Optional | Custom CSS class(es) to apply to the modal footer. |
+| `children`  | `ReactNode` | Yes      | Content to display inside the modal footer.        |
+
+## Styles
+
+`react-ease-modal` allows you to add custom styles via the `className` prop of each subcomponent.
+
+### Example with Custom Styles
+
+```jsx
+import { useState } from 'react';
+import { Modal, ModalContent, ModalClose, ModalDescription, ModalFooter, ModalHeader, ModalTitle } from 'react-ease-modal';
+import './styles/global.css'; // Your custom CSS file
+
+function App() {
+    const [isOpen, setIsOpen] = useState(false);
+
+    return (
+        <main>
+            <button className="btn btn-primary" onClick={() => setIsOpen(true)}>
+                Open Modal
+            </button>
+            <Modal className="modal-overlay" open={isOpen}>
+                <ModalContent className="modal-container">
+                    <ModalClose className="modal-icon" onClose={() => setIsOpen(false)} />
+                    <img className="modal-hero" src="./hero.svg" alt="hero" />
+                    <ModalHeader className="modal-header">
+                        <ModalTitle className="modal-title">Modal Title</ModalTitle>
+                        <ModalDescription className="modal-description">This is the modal content.</ModalDescription>
+                    </ModalHeader>
+                    <ModalFooter className="modal-footer">
+                        <button className="btn btn-secondary" onClick={() => setIsOpen(false)}>
+                            Close Modal
+                        </button>
+                    </ModalFooter>
+                </ModalContent>
+            </Modal>
+        </main>
+    );
+}
+
+export default App;
+```
+
+### Sample CSS File
+
+```css
+/* Basic styles */
+main {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn {
+    border-radius: 2rem;
+    transition: background-color 0.4s, border 0.4s;
+}
+
+.btn-primary {
+    background-color: #e2e2e2;
+    color: #536cb4;
+    padding: 1rem 2rem;
+}
+
+.btn-primary:hover {
+    background-color: transparent;
+    color: #e2e2e2;
+}
+
+.modal-overlay {
+    position: absolute;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.modal-container {
+    background-color: #323232;
+    border-radius: 0.8rem;
+    padding: 1.5rem;
+    width: 450px;
+    box-shadow: rgba(0, 0, 0, 0.3) 2px 2px 6px;
+}
+
+.modal-header {
+    text-align: center;
+    padding-bottom: 1rem;
+}
+
+.modal-title {
+    color: #e2e2e2;
+    margin: 1rem 0;
+}
+
+.modal-description {
+    color: #bebebe;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: center;
+    padding-top: 1rem;
+    border-top: 1px solid #bebebe;
+}
+```
+
+## License
+
+This project is licensed under the [MIT](LICENSE) license.
+
+---
