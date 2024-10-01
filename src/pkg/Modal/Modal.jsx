@@ -2,11 +2,11 @@ import React from 'react';
 import { ReactComponent as CloseIcon } from './x.svg';
 
 export const Modal = ({ open, children, className, ariaLabelledBy, ariaDescribedBy }) =>
-    open ? (
+    open && (
         <div className={className} role="dialog" aria-modal="true" aria-labelledby={ariaLabelledBy} aria-describedby={ariaDescribedBy} tabIndex="-1">
             {children}
         </div>
-    ) : null;
+    );
 
 export const ModalContent = ({ children, className, ariaLabel }) => (
     <div className={className} aria-label={ariaLabel}>
@@ -14,7 +14,7 @@ export const ModalContent = ({ children, className, ariaLabel }) => (
     </div>
 );
 
-export const ModalClose = ({ onClose, className, ariaLabel }) => <CloseIcon className={className} aria-label={ariaLabel} onClick={onClose} />;
+export const ModalClose = ({ onClose, className, ariaLabel }) => <CloseIcon className={className} aria-label={ariaLabel} role="button" onClick={onClose} />;
 
 export const ModalHeader = ({ children, className, ariaLabel }) => (
     <div className={className} aria-label={ariaLabel}>
