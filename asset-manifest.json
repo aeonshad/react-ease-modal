@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/react-ease-modal/static/css/main.cb87286c.css",
+    "main.js": "/react-ease-modal/static/js/main.6fe4ed69.js",
+    "index.html": "/react-ease-modal/index.html",
+    "static/media/x.svg": "/react-ease-modal/static/media/x.415b3f90dacdfaabaa2095e3ef5faf6b.svg",
+    "main.cb87286c.css.map": "/react-ease-modal/static/css/main.cb87286c.css.map",
+    "main.6fe4ed69.js.map": "/react-ease-modal/static/js/main.6fe4ed69.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cb87286c.css",
+    "static/js/main.6fe4ed69.js"
+  ]
+}
