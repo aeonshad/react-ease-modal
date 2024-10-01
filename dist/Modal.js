@@ -6,14 +6,14 @@ export const Modal = ({
   className,
   ariaLabelledBy,
   ariaDescribedBy
-}) => open ? /*#__PURE__*/React.createElement("div", {
+}) => open && /*#__PURE__*/React.createElement("div", {
   className: className,
   role: "dialog",
   "aria-modal": "true",
   "aria-labelledby": ariaLabelledBy,
   "aria-describedby": ariaDescribedBy,
   tabIndex: "-1"
-}, children) : null;
+}, children);
 export const ModalContent = ({
   children,
   className,
@@ -29,6 +29,7 @@ export const ModalClose = ({
 }) => /*#__PURE__*/React.createElement(CloseIcon, {
   className: className,
   "aria-label": ariaLabel,
+  role: "button",
   onClick: onClose
 });
 export const ModalHeader = ({
