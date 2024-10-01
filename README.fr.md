@@ -14,6 +14,7 @@ Un composant de modale simple, modulaire et personnalisable pour les application
 -   [Utilisation](#utilisation)
 -   [Propriétés](#propriétés)
 -   [Styles](#styles)
+-   [Accessibilité](#accessibilité)
 -   [Licence](#licence)
 
 ## Installation
@@ -83,11 +84,13 @@ export default App;
 
 ### Modal
 
-| Propriété   | Type        | Requis     | Description                                             |
-| ----------- | ----------- | ---------- | ------------------------------------------------------- |
-| `className` | `string`    | Facultatif | Classe(s) CSS personnalisée(s) à appliquer à la modale. |
-| `open`      | `boolean`   | Oui        | Indique si la modale est ouverte ou fermée.             |
-| `children`  | `ReactNode` | Oui        | Contenu à afficher à l'intérieur de la modale.          |
+| Propriété         | Type        | Requis     | Description                                                                                 |
+| ----------------- | ----------- | ---------- | ------------------------------------------------------------------------------------------- |
+| `className`       | `string`    | Facultatif | Classe(s) CSS personnalisée(s) à appliquer à la modale.                                     |
+| `open`            | `boolean`   | Oui        | Indique si la modale est ouverte ou fermée.                                                 |
+| `children`        | `ReactNode` | Oui        | Contenu à afficher à l'intérieur de la modale.                                              |
+| `ariaLabelledBy`  | `string`    | Facultatif | ID de l'élément définissant le titre de la modale pour l'attribut `aria-labelledby`.        |
+| `ariaDescribedBy` | `string`    | Facultatif | ID de l'élément définissant la description de la modale pour l'attribut `aria-describedby`. |
 
 ### ModalContent
 
@@ -95,6 +98,7 @@ export default App;
 | ----------- | ----------- | ---------- | ------------------------------------------------------------------- |
 | `className` | `string`    | Facultatif | Classe(s) CSS personnalisée(s) à appliquer au contenu de la modale. |
 | `children`  | `ReactNode` | Oui        | Contenu à afficher à l'intérieur de la modale.                      |
+| `ariaLabel` | `string`    | Facultatif | Libellé pour l'attribut `aria-label` pour le contenu de la modale.  |
 
 ### ModalClose
 
@@ -102,6 +106,7 @@ export default App;
 | ----------- | ---------- | ---------- | ------------------------------------------------------------------------------- |
 | `className` | `string`   | Facultatif | Classe(s) CSS personnalisée(s) à appliquer à l'icône de fermeture de la modale. |
 | `onClose`   | `function` | Oui        | Fonction de rappel appelée pour fermer la modale.                               |
+| `ariaLabel` | `string`   | Facultatif | Libellé pour l'attribut `aria-label` de l'icône de fermeture.                   |
 
 ### ModalHeader
 
@@ -109,20 +114,23 @@ export default App;
 | ----------- | ----------- | ---------- | -------------------------------------------------------------------- |
 | `className` | `string`    | Facultatif | Classe(s) CSS personnalisée(s) à appliquer à l'en-tête de la modale. |
 | `children`  | `ReactNode` | Oui        | Contenu à afficher dans l'en-tête de la modale.                      |
+| `ariaLabel` | `string`    | Facultatif | Libellé pour l'attribut `aria-label` pour l'en-tête de la modale.    |
 
 ### ModalTitle
 
-| Propriété   | Type        | Requis     | Description                                                       |
-| ----------- | ----------- | ---------- | ----------------------------------------------------------------- |
-| `className` | `string`    | Facultatif | Classe(s) CSS personnalisée(s) à appliquer au titre de la modale. |
-| `children`  | `ReactNode` | Oui        | Titre à afficher dans la modale.                                  |
+| Propriété   | Type        | Requis     | Description                                                                     |
+| ----------- | ----------- | ---------- | ------------------------------------------------------------------------------- |
+| `className` | `string`    | Facultatif | Classe(s) CSS personnalisée(s) à appliquer au titre de la modale.               |
+| `children`  | `ReactNode` | Oui        | Titre à afficher dans la modale.                                                |
+| `id`        | `string`    | Facultatif | ID utilisé pour l'attribut `aria-labelledby` afin de lier le titre à la modale. |
 
 ### ModalDescription
 
-| Propriété   | Type        | Requis     | Description                                                               |
-| ----------- | ----------- | ---------- | ------------------------------------------------------------------------- |
-| `className` | `string`    | Facultatif | Classe(s) CSS personnalisée(s) à appliquer à la description de la modale. |
-| `children`  | `ReactNode` | Oui        | Description à afficher dans la modale.                                    |
+| Propriété   | Type        | Requis     | Description                                                                            |
+| ----------- | ----------- | ---------- | -------------------------------------------------------------------------------------- |
+| `className` | `string`    | Facultatif | Classe(s) CSS personnalisée(s) à appliquer à la description de la modale.              |
+| `children`  | `ReactNode` | Oui        | Description à afficher dans la modale.                                                 |
+| `id`        | `string`    | Facultatif | ID utilisé pour l'attribut `aria-describedby` afin de lier la description à la modale. |
 
 ### ModalFooter
 
@@ -130,6 +138,7 @@ export default App;
 | ----------- | ----------- | ---------- | ---------------------------------------------------------------- |
 | `className` | `string`    | Facultatif | Classe(s) CSS personnalisée(s) à appliquer au pied de la modale. |
 | `children`  | `ReactNode` | Oui        | Contenu à afficher dans le pied de la modale.                    |
+| `ariaLabel` | `string`    | Facultatif | Libellé pour l'attribut `aria-label` pour le pied de la modale.  |
 
 ## Styles
 
@@ -240,6 +249,64 @@ main {
     padding-top: 1rem;
     border-top: 1px solid #bebebe;
 }
+```
+
+## Accessibilité
+
+Le composant Modal inclut plusieurs fonctionnalités visant à améliorer l'accessibilité :
+
+-   **Identification comme dialogue** : Utilisation de l'attribut `role="dialog"` pour indiquer que la fenêtre modale est un dialogue, ce qui améliore l'expérience des utilisateurs de lecteurs d'écran.
+-   **Gestion du contenu en arrière-plan** : L'attribut `aria-modal="true"` signale aux technologies d'assistance que le contenu derrière la modale n'est pas accessible tant que celle-ci est ouverte.
+-   **Descriptions contextuelles** :
+    -   Les attributs `aria-labelledby` et `aria-describedby` fournissent des descriptions supplémentaires :
+        -   `aria-labelledby` associe un élément, tel qu'un titre de modale, au dialogue afin que le titre soit annoncé.
+        -   `aria-describedby` lie une description au dialogue, offrant un contexte supplémentaire aux utilisateurs.
+-   **Gestion du focus** : L'attribut `tabIndex="-1"` est ajouté pour s'assurer que la modale reçoit le focus lorsque l'utilisateur navigue via le clavier.
+-   **Accessibilité du bouton de fermeture** : Le bouton de fermeture inclut un attribut `aria-label` pour décrire sa fonction aux utilisateurs de lecteurs d'écran.
+-   **Attributs `aria-label` supplémentaires** : Les composants et les sous-composants peuvent également inclure des attributs `aria-label` pour fournir des descriptions contextuelles.
+
+---
+
+Ces bonnes pratiques améliorent l'interaction avec la modale pour les utilisateurs de technologies d'assistance et favorisent une expérience utilisateur inclusive.
+
+### Exemple
+
+```jsx
+import { useState } from 'react';
+import { Modal, ModalContent, ModalClose, ModalDescription, ModalFooter, ModalHeader, ModalTitle } from 'react-ease-modal';
+
+function App() {
+    const [isOpen, setIsOpen] = useState(false);
+
+    return (
+        <main>
+            <button className="btn btn-primary" onClick={() => setIsOpen(true)}>
+                Ouvrir la modale
+            </button>
+            <Modal className="modal-overlay" open={isOpen} ariaLabelledBy="modal-title" ariaDescribedBy="modal-description">
+                <ModalContent className="modal-container">
+                    <ModalClose className="modal-icon" onClose={() => setIsOpen(false)} ariaLabel="Fermer la modale" />
+                    <img className="modal-hero" src="./hero.svg" alt="hero" />
+                    <ModalHeader className="modal-header">
+                        <ModalTitle className="modal-title" id="modal-title">
+                            Titre de la modale
+                        </ModalTitle>
+                        <ModalDescription className="modal-description" id="modal-description">
+                            Ceci est le contenu de la modale.
+                        </ModalDescription>
+                    </ModalHeader>
+                    <ModalFooter className="modal-footer">
+                        <button className="btn btn-secondary" onClick={() => setIsOpen(false)}>
+                            Fermer la modale
+                        </button>
+                    </ModalFooter>
+                </ModalContent>
+            </Modal>
+        </main>
+    );
+}
+
+export default App;
 ```
 
 ## Licence
