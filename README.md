@@ -15,6 +15,7 @@ A simple, modular, and customizable modal component for React applications. Comp
 -   [Properties](#properties)
 -   [Styles](#styles)
 -   [Accessibility](#accessibility)
+-   [Demonstration](#demonstration)
 -   [License](#license)
 
 ## Installation
@@ -309,6 +310,12 @@ function App() {
 
 export default App;
 ```
+
+## Demonstration
+
+You can see the demo of this component at the following address: [https://aeonshad.github.io/react-ease-modal/](https://aeonshad.github.io/react-ease-modal/)
+
+The source code is available at this address: [https://github.com/aeonshad/react-ease-modal](https://github.com/aeonshad/react-ease-modal/)
 
 ## License
 
